@@ -1,12 +1,11 @@
 import Phaser from 'phaser';
-import {create, preload} from "./loader";
+import { create, preload } from "./loader";
 
 export default {
   title: 'Space Invaders',
   type: Phaser.AUTO,
   parent: 'space-invaders',
   backgroundColor: '#33A5E7',
-  backgroundImage: 'assets/bg.png',
   scene: {
     preload: preload,
     create: create,

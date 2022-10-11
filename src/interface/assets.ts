@@ -1,4 +1,6 @@
 export enum AssetType {
+    Bg = "bg",
+    Logo = "logo",
     Bullet = "bullet",
     EnemyBullet = "enemyBullet",
     Alien = "alien",
@@ -8,6 +10,7 @@ export enum AssetType {
 }
 
 export enum SoundType {
+    Music = "music",
     Kaboom = "kaboom",
     Shoot = "shoot",
     InvaderKilled = "invaderKilled"
