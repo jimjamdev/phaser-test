@@ -6,16 +6,16 @@ export default class StartScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('bg', 'assets/bg.png');
-        this.load.image('logo', 'assets/logo.png');
-        this.load.image('orb', 'assets/glow-orb.png')
-        this.load.image('bullet', 'assets/bullet.png');
-        this.load.spritesheet('invader', 'assets/invader.png', { frameWidth: 32, frameHeight: 32 });
-        this.load.image('alienYellow', 'assets/alien-yellow.png');
-        this.load.image('alienPink', 'assets/alien-pink.png');
-        this.load.image('alienBlue', 'assets/alien-blue.png');
-        this.load.image('alienOrange', 'assets/alien-orange.png');
-        this.load.image('alienGreen', 'assets/alien-green.png');
+        this.load.image('bg', 'assets/images/bg.png');
+        this.load.image('logo', 'assets/images/logo.png');
+        this.load.image('orb', 'assets/images/glow-orb.png')
+        this.load.image('bullet', 'assets/images/bullet.png');
+        this.load.spritesheet('invader', 'assets/images/invader.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.image('alienYellow', 'assets/images/alien-yellow.png');
+        this.load.image('alienPink', 'assets/images/alien-pink.png');
+        this.load.image('alienBlue', 'assets/images/alien-blue.png');
+        this.load.image('alienOrange', 'assets/images/alien-orange.png');
+        this.load.image('alienGreen', 'assets/images/alien-green.png');
     }
 
 
