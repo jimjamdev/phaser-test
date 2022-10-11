@@ -16,10 +16,16 @@ export default class StartScene extends Phaser.Scene {
         this.load.image('alienBlue', 'assets/images/alien-blue.png');
         this.load.image('alienOrange', 'assets/images/alien-orange.png');
         this.load.image('alienGreen', 'assets/images/alien-green.png');
+        this.load.audio('introWave', 'assets/audio/warp.mp3');
+        this.load.audio('synthWave', 'assets/audio/synthwave.mp3');
     }
 
 
     create() {
+        // Audio
+        const music = this.sound.add('synthWave');
+        music.play( );
+
         // Images
         const logo = this.add.image(240, 220, 'logo');
         const bg = this.add.image(240, 426, 'bg');
