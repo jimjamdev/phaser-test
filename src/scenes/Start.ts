@@ -24,10 +24,10 @@ export default class StartScene extends Phaser.Scene {
     create() {
         // Audio
         const music = this.sound.add('synthWave');
-        music.play( );
+        music.play();
 
         // Images
-        const logo = this.add.image(240, 220, 'logo');
+        const logo = this.add.image(240, 0, 'logo');
         const bg = this.add.image(240, 426, 'bg');
 
         // Button
@@ -41,5 +41,14 @@ export default class StartScene extends Phaser.Scene {
         // Logo
         logo.setDepth(1)
         logo.setScale(0.45);
+
+        this.tweens.add({
+            targets: logo,
+            y: 270,
+            duration: 1500,
+            ease: 'Sine.out',
+            yoyo: false,
+            repeat: 0
+        });
     }
 }
