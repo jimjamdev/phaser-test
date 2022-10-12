@@ -12,11 +12,18 @@ export default class StartScene extends Phaser.Scene {
         this.load.image(AssetType.Logo, '/images/logo.png');
         this.load.image(AssetType.EnemyBullet, '/images/glow-orb.png')
         this.load.image(AssetType.Bullet, '/images/bullet.png');
-        this.load.spritesheet(AssetType.Alien, '/images/invader.png', { frameWidth: 32, frameHeight: 32 });
-        this.load.image(AssetType.Ship, '/images/player.png');
-        this.load.image(AssetType.Kaboom, '/images/explosion.png');
-        this.load.image(AssetType.Starfield, '/images/starfield.jpg');
+        this.load.spritesheet(AssetType.Alien, '/images/alien.png', { frameWidth: 32, frameHeight: 32 });
+        this.load.image(AssetType.Ship, '/images/ship.png');
+        this.load.spritesheet(AssetType.Kaboom, "/images/explode.png", {
+            frameWidth: 128,
+            frameHeight: 128,
+        });
+        this.load.image(AssetType.Starfield, '/images/grid.png');
+
         this.load.audio(SoundType.Music, '/audio/synthwave.mp3');
+        this.load.audio(SoundType.Shoot, "/audio/laser.mp3");
+        this.load.audio(SoundType.Kaboom, "/audio/explosion.mp3");
+        this.load.audio(SoundType.InvaderKilled, "/audio/bigboom.mp3");
     }
 
     create() {
@@ -36,7 +43,6 @@ export default class StartScene extends Phaser.Scene {
         this.tweens.add({
             targets: logo,
             y: 270,
-            duration: 1500,
             ease: 'Sine.out',
             yoyo: false,
             repeat: 0

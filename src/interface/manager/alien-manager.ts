@@ -48,7 +48,6 @@ export class AlienManager {
             this._scene.tweens.add({
                 targets: c,
                 ease: "Linear",
-                duration: 2000,
                 x: "+=200",
                 paused: false,
                 delay: 0,
