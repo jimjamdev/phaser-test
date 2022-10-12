@@ -12,6 +12,7 @@ import {Kaboom} from "../interface/kaboom";
 import {Alien} from "../interface/alien";
 
 export default class GameScene extends Phaser.Scene {
+  speed = 200;
   state: GameState;
   assetManager: AssetManager;
   animationFactory: AnimationFactory;
@@ -90,6 +91,11 @@ export default class GameScene extends Phaser.Scene {
 
     if (this.fireKey.isDown) {
       this._fireBullet();
+    }
+    if (this.input.activePointer.isDown) {
+      this._fireBullet();
+      const movePosition = this.input.activePointer.position.x < 240 ? -200 : 200;
+      playerBody.setVelocityX(movePosition);
     }
   }
 

@@ -30,11 +30,11 @@ export class AlienManager {
     }
 
     private _sortAliens() {
-        let ORIGIN_X = 100;
+        let ORIGIN_X = 0;
         let ORIGIN_Y = 100;
         this.aliens.clear(true, true);
-        for (let y = 0; y < 4; y++) {
-            for (let x = 0; x < 10; x++) {
+        for (let y = 0; y < 4; y++) { // Rows of aliens
+            for (let x = 0; x < 8; x++) { // Columns of aliens
                 let alien: Alien = this.aliens.create(ORIGIN_X + x * 48, ORIGIN_Y + y * 50);
                 alien.setOrigin(0.5, 0.5);
                 alien.play(AnimationType.Fly)
@@ -44,11 +44,11 @@ export class AlienManager {
     }
 
     private _animate() {
-        this.aliens.children.iterate((c: Alien) => {
+        this.aliens.children.iterate((alien: Alien) => {
             this._scene.tweens.add({
-                targets: c,
+                targets: alien,
                 ease: "Linear",
-                x: "+=200",
+                x: `+=200`, // Alien movement speed - increase to go faster
                 paused: false,
                 delay: 0,
                 yoyo: true,
