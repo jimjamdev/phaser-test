@@ -1,29 +1,48 @@
 import Phaser from 'phaser';
+import {GameState} from "../interface/game-state";
+import {AssetManager} from "../interface/manager/asset-manager";
+import {AnimationFactory} from "../interface/factory/animation-factory";
+import {ScoreManager} from "../interface/manager/score-manager";
+import {AlienManager} from "../interface/manager/alien-manager";
+import {AssetType} from "../interface/assets";
+import {Ship} from "../interface/ship";
 
 export default class GameScene extends Phaser.Scene {
+  state: GameState;
+  assetManager: AssetManager;
+  animationFactory: AnimationFactory;
+  scoreManager: ScoreManager;
+  bulletTime = 0;
+  firingTimer = 0;
+  starfield: Phaser.GameObjects.TileSprite;
+  player: Phaser.Physics.Arcade.Sprite;
+  alienManager: AlienManager;
+  cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  fireKey: Phaser.Input.Keyboard.Key;
   constructor() {
     super('GameScene');
   }
 
   create() {
-    const bg = this.add.image(240, 426, 'bg');
-    bg.setDepth(0);
+    // State
+    this.state = GameState.Playing;
+    this.starfield = this.add
+        .tileSprite(0, 0, 480, 853, AssetType.Starfield)
+        .setOrigin(0, 0)
+        .setDepth(1)
+        .setAlpha(0.15)
+        .setBlendMode(Phaser.BlendModes.MULTIPLY);
 
-    // Bullets
-    const bullets = this.add.group();
+    this.add.image(240, 426, 'bg').setDepth(0);
 
-    // Aliens
-    const alien = this.add.image(240, 100, 'alienOrange');
-    alien.setScale(0.2);
-
-
-    this.tweens.add({
-      targets: alien,
-      y: 350,
-      duration: 1500,
-      ease: 'Sine.inOut',
-      yoyo: true,
-      repeat: -1
-    });
+    this.assetManager = new AssetManager(this);
+    this.animationFactory = new AnimationFactory(this);
+    this.cursors = this.input.keyboard.createCursorKeys();
+    this.fireKey = this.input.keyboard.addKey(
+        Phaser.Input.Keyboard.KeyCodes.SPACE
+    );
+    this.player = Ship.create(this);
+    this.alienManager = new AlienManager(this);
+    this.scoreManager = new ScoreManager(this);
   }
 }
